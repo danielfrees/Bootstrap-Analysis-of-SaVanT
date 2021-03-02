@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[78]:
 def make_dataframe(text_file):
     with open(text_file, "r") as f:
         all_lines = f.read()
