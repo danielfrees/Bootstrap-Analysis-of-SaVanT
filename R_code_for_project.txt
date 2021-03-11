@@ -1,0 +1,61 @@
+##making a plot for sig scores in all skin diseases across all cell types
+##taking avg sig score for each skin disease across all cell types 
+##plotted avg sig score for each skin disease
+
+
+##first, import SaVanT matrix data into R  
+
+##then, use use mean() function to calculate average across all cell types and create vector (average scores below) 
+
+sig_score<-c(461.9123,401.8497,391.2273,354.7214,355.281,371.8328,483.0428,452.2398,509.2898,372.8355,367.913,299.0611,363.9993,330.1589,464.5844,354.1527,531.0206,448.5576,319.414,453.8845,429.6671)
+
+##create skin disease names vector 
+
+skin_disease<-c("Acne","Acute_wound","All_con_derm","Alopecia","At_derm","Bas_cell_car","Burn","Chancroid","Cut_sarc","Dis_lup_ery","ENL","Irr_con_derm","Leprosy","Melanoma","Myc_fung","Normal_skin","Post_op_wound","Psoriasis","Re_rxn_lep","SJ","Sq_cell_car") 
+
+##make data frame with both vectors
+
+data<-data.frame(sig_score,skin_disease)
+
+
+##load ggplot2 to create dot plot
+
+library(ggplot2)
+
+##code to plot dot plot 
+
+ggplot(data,aes(x=sig_score,y=skin_disease))+
+geom_segment(aes(yend=skin_disease),xend=0)+
+geom_point(size=3)
+
+##save as pdf
+
+##in order to do a t-test between normal vs. SJ and SJ vs. all other skin diseases, create three vectors: SJ, Normal_skin, All_other_skin_diseases each with their corresponding values. 
+
+##to run t-test, use t.test function
+
+t.test(Normal_skin,SJ,paired=TRUE)
+
+	Paired t-test
+
+data:  Normal_skin and SJ
+t = -3.6716, df = 353, p-value = 0.0002783
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -153.1529  -46.3106
+sample estimates:
+mean of the differences 
+              -99.73173 
+
+t.test(SJ,All_other_skin_diseases,var.equal=TRUE)
+
+	Two Sample t-test
+
+data:  SJ and All_other_skin_diseases
+t = 2.2542, df = 7078, p-value = 0.02422
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  6.279702 90.056733
+sample estimates:
+mean of x mean of y 
+ 453.8845  405.7162 
