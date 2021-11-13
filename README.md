@@ -35,40 +35,51 @@ First, the SaVanT software was used to generate sample-signature matrix output f
 The following experimental statistic was used to quantify the results for each of the above claims:
 
 Let Z<sub>A</sub> = Average combined signature z-score for relevant signatures in Group A
-Let Z<sub>B</sub> = Average combined signature z-score for relevant signatures in Group B
+Let Z<sub>B</sub> = Average combined signature z-score for relevant signatures in Group B 
 Difference between groups = Z<sub>A</sub> - Z<sub>B</sub>
 
 To determine significance of the experimental result for each claim, null hypothesis Monte Carlo simulations were generated via bootstrapping of the original data. The null hypothesis was that differences between groups were due to random chance. Thus, null hypothesis simulation generation involved pooling data from each experimental group into a single ‘population’ data pool, followed by resampling with replacement from this ‘population’ data into simulation groups of the same sample size as the original experiment. Ten thousand null hypothesis simulations were run. Null hypothesis distributions were then visualized, and finally two-tailed probabilistic p-values were calculated for each claim.
+
 In addition to quantification and significance testing of the four claims in Python, exploratory analysis was performed in R. The goal of this analysis was to determine compatibility between sample-signature matrix data and popular R packages, given that R is another highly popular language for computational biologists. Visualization and standard statistical t-test methods were performed in R with perfect compatibility.
 
 ## Results:
 (Note: We used an alpha threshold of p < 0.05 to indicate significance. Significant p-values are bolded)
 
-## Claim 1: Influenza pneumonia is categorized by higher signature scores for B cells.
+
+*Claim 1: Influenza pneumonia is categorized by higher signature scores for B cells.
 
 Main analysis (Combined B Cells): Experimental Diff (Influenza – Bacterial) = 0.033898, p = 0.7638
+
 Sub-analysis (WRS B Cells): Experimental Diff (Influenza – Bacterial) = 0.0266023, p = 0.0675 
+
 Sub-analysis (HPCA B Cells): Experimental Diff (Influenza – Bacterial) = 0.177628, p = 0.0041
+
 Sub-analysis (HBA CD19+ B Cells): Experimental Diff (Influenza – Bacterial) = -0.23832, p = 0.0071
 
-## Claim 2: Bacterial pneumonia is categorized by higher signature scores for neutrophils.
+*Claim 2: Bacterial pneumonia is categorized by higher signature scores for neutrophils.
 
 Main analysis (Combined Neutrophils): Experimental Diff (Bacterial – Influenza)= 0.642597,  p = 0.0000
+
 Sub-analysis (WRS Neutrophils): Experimental Diff (Bacterial – Influenza)= 0.438424,  p = 0.0027
+
 Sub-analysis (HPCA-LPS Neutrophils): Experimental Diff (Bacterial – Influenza)= 0.505675, p = 0.0002
+
 Sub-analysis (HPCA Neutrophils): Experimental Diff (Bacterial – Influenza)= 0.983693, p = 0.0001
 
-## Claim 3: Leprosy lesions are categorized by higher signature scores for macrophages.
+*Claim 3: Leprosy lesions are categorized by higher signature scores for macrophages.
 
 Main analysis (Combined Macrophages): Experimental Diff (Leprosy – Others)= 0.0041, p = 0.0000
 
-## Claim 4: Stevens Johnsons disease is categorized by higher signature scores for hematopoietic cells.
+*Claim 4: Stevens Johnsons disease is categorized by higher signature scores for hematopoietic cells.
 
 Analysis #1(WRS Hematopoietic Cells):Experimental Diff (SJ – Other)= 48.430840*, p = 0.2928
+
 Analysis #2(DermDB Hematopoietic Cells): Experimental Diff (SJ – Other)= 148.682527*, p = 0.2143
+
 *Claim 4 Only: Raw signature scores used for experimental differences instead of z-scores
 
-## Overall Signal: 
+
+Overall Signal: 
 100% * ( significant findings / total comparisons performed ) = 63.6% overall signal
 
 ## Discussion: 
@@ -86,25 +97,25 @@ Sung, Jaeyun, et al. “Molecular Signatures from Omics Data: From Chaos to Cons
 
 Yanez, Diana A, et al. “The Role of Macrophages in Skin Homeostasis.” Pflugers Archiv: European Journal of Physiology, U.S. National Library of Medicine, Apr. 2017, www.ncbi.nlm.nih.gov/pmc/articles/PMC5663320/. 
 
-## Source Code: https://github.com/danielfrees/Bootstrap-Analysis-of-SaVanT
+Source Code: https://github.com/danielfrees/Bootstrap-Analysis-of-SaVanT
 
 
 ## Null Hypothesis Distribution Figures:
 
- **Claim 1:
+ Claim 1:
 
-[Claim 1 Dist. 1](images/claim1_1.png)
-
-
-
-**Claim 2:
+![Dist. 1](https://github.com/danielfrees/Bootstrap-Analysis-of-SaVanT/images/claim1_1.png?raw=true)
 
 
 
-**Claim 3:
+Claim 2:
+
+
+
+Claim 3:
 
 Combined Macrophage Signature Score (Leprosy - Other)
 
 
-**Claim 4:
+Claim 4:
 
